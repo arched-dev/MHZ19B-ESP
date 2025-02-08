@@ -45,19 +45,17 @@ Usage
 
 ### Basic Example
 
-``` #include "MHZ19B\_ESP32.h"
-
-  
+```
+#include "MHZ19B\_ESP32.h"
 
 MHZ19B sensor(Serial2, 16, 17); // Use UART2 with GPIO16 (RX) & GPIO17 (TX)
-
   
 
 void setup() {
 
-Serial.begin(115200);
-
-sensor.begin();
+    Serial.begin(115200);
+    
+    sensor.begin();
 
 }
 
@@ -65,13 +63,13 @@ sensor.begin();
 
 void loop() {
 
-int co2 = sensor.readCO2();
-
-Serial.print("CO2 Concentration: ");
-
-Serial.println(co2);
-
-delay(2000);
+    int co2 = sensor.readCO2();
+    
+    Serial.print("CO2 Concentration: ");
+    
+    Serial.println(co2);
+    
+    delay(2000);
 
 }
 ```
