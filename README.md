@@ -45,7 +45,7 @@ Usage
 
 ### Basic Example
 
-#include "MHZ19B\_ESP32.h"
+``` #include "MHZ19B\_ESP32.h"
 
   
 
@@ -74,6 +74,7 @@ Serial.println(co2);
 delay(2000);
 
 }
+```
 
 Available Functions
 -------------------
