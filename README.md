@@ -10,35 +10,35 @@ Features
 --------
 
 *   Uses **ESP32 hardware UART** (no SoftwareSerial required)
-
+    
 *   Allows **custom UART pins**
-
+    
 *   Supports the following MH-Z19B commands:
-
+    
     *   Read CO₂ concentration (`0x86`)
-
+        
     *   Zero point calibration (`0x87`)
-
+        
     *   Span calibration (`0x88`)
-
+        
     *   Auto-calibration on/off (`0x79`)
-
+        
     *   Set detection range (`0x99`)
-
+        
 *   Automatic **checksum calculation** for data integrity
-
+    
 
 Installation
 ------------
 
 1.  Download the library files (`MHZ19B_ESP32.h` and `MHZ19B_ESP32.cpp`).
-
+    
 2.  Place them in your Arduino project's `src/` directory.
-
+    
 3.  Include the header in your code:
-
+    
     #include "MHZ19B\_ESP32.h"
-
+    
 
 Usage
 -----
@@ -47,11 +47,11 @@ Usage
 
 #include "MHZ19B\_ESP32.h"
 
-
+  
 
 MHZ19B sensor(Serial2, 16, 17); // Use UART2 with GPIO16 (RX) & GPIO17 (TX)
 
-
+  
 
 void setup() {
 
@@ -61,7 +61,7 @@ sensor.begin();
 
 }
 
-
+  
 
 void loop() {
 
@@ -75,15 +75,42 @@ delay(2000);
 
 }
 
+Available Functions
+-------------------
+
+### `void begin(int baudRate = 9600)`
+
+Initializes the sensor with the specified baud rate.
+
+### `int readCO2()`
+
+Reads and returns the CO₂ concentration in ppm. Returns `-1` if reading fails.
+
+### `void calibrateZero()`
+
+Performs a zero point calibration (sensor must be in a 400ppm CO₂ environment for at least 20 minutes before execution).
+
+### `void calibrateSpan()`
+
+Performs a span calibration (used for setting a known reference CO₂ level).
+
+### `void setAutoCalibration(bool enable)`
+
+Enables (`true`) or disables (`false`) automatic baseline calibration.
+
+### `void setDetectionRange(uint16_t range)`
+
+Sets the sensor detection range (e.g., `2000 ppm` or `5000 ppm`).
+
 Notes
 -----
 
 *   **Ensure correct wiring:** The sensor operates at **3.3V UART level**, so direct connection to ESP32 pins is fine.
-
+    
 *   **Preheat Time:** The sensor requires **3 minutes** to warm up before stable readings.
-
+    
 *   **Zero Calibration:** Run `sensor.calibrateZero();` in fresh air (~400 ppm) and wait 20 minutes before execution.
-
+    
 
 License
 -------
