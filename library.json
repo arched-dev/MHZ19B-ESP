@@ -1,0 +1,20 @@
+{
+  "name": "MHZ19B-ESP",
+  "version": "0.0.1",
+  "keywords": ["esp8266", "esp32", "co2", "MH-Z19B"],
+  "description": "A high-level abstraction over MH-Z19B CO2 sensor for ESP8266 and ESP32",
+  "homepage": "https://github.com/arched-dev/MHZ19B-ESP",
+  "license": "MIT",
+  "authors": {
+    "name": "Lewis Morris",
+    "url": "https://github.com/lewis-morris",
+    "maintainer": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arched-dev/MHZ19B-ESP",
+    "branch": "main"
+  },
+  "frameworks": ["arduino"],
+  "platforms": ["espressif8266", "espressif32"]
+}
